@@ -45,16 +45,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getUniquePsuedoID(): String? {
-        val m_szDevIDShort =
-            "35" + (Build.BOARD.length % 10) + (Build.BRAND.length % 10) + (Build.SUPPORTED_64_BIT_ABIS[0].toString().length % 10) + (Build.DEVICE.length % 10) + (Build.MANUFACTURER.length % 10) + (Build.MODEL.length % 10) + (Build.PRODUCT.length % 10)
-        var serial: String? = null
-        try {
-            serial = Build::class.java.getField("SERIAL")[null].toString()
-            return UUID(m_szDevIDShort.hashCode().toLong(), serial.hashCode().toLong()).toString()
-        } catch (exception: Exception) {
-            serial = "serial" // some value
-        }
-        return UUID(m_szDevIDShort.hashCode().toLong(), serial.hashCode().toLong()).toString()
-    }
+
 }
